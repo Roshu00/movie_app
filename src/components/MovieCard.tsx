@@ -1,14 +1,12 @@
+import { MovieItemType } from "@/types";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-export const MovieCard = ({
-  movie,
-}: {
-  movie: { title: string; backdrop_path: string };
-}) => {
+export const MovieCard = ({ movie }: { movie: MovieItemType }) => {
   const imagePrefix = "https://image.tmdb.org/t/p/original";
   return (
-    <div>
+    <Link href={`/${movie.id}`}>
       <Image
         src={imagePrefix + movie.backdrop_path}
         width={500}
@@ -16,6 +14,6 @@ export const MovieCard = ({
         alt={movie.title}
       />
       {movie.title}
-    </div>
+    </Link>
   );
 };
